@@ -2,6 +2,7 @@ package pl.prz.mnykolaichuk.orderservice.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.prz.mnykolaichuk.orderservice.dto.OrderLineItemsDto;
 import pl.prz.mnykolaichuk.orderservice.dto.OrderRequest;
 import pl.prz.mnykolaichuk.orderservice.model.Order;
@@ -13,6 +14,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class OrderService {
 
     private final OrderRepository orderRepository;
