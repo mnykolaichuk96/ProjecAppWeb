@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <directory url="file://$PROJECT_DIR$/ProjectAppWeb/src/main/resources/archetype-resources" includeSubdirectories="true" />
+    </excludeFromCompile>
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
@@ -10,16 +13,16 @@
         <module name="product-web-service" />
         <module name="order-service" />
         <module name="inventory-service" />
+        <module name="ProjectAppWeb" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="inventory-service" target="17" />
-      <module name="order-service" target="17" />
-      <module name="product-web-service" target="17" />
+      <module name="ProjectAppWeb" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ProjecAppWeb" options="" />
       <module name="inventory-service" options="-parameters" />
       <module name="order-service" options="-parameters" />
       <module name="product-web-service" options="-parameters" />

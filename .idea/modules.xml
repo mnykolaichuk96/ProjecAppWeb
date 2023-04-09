@@ -3,9 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ProjecAppWeb.iml" filepath="$PROJECT_DIR$/.idea/ProjecAppWeb.iml" />
-      <module fileurl="file://$PROJECT_DIR$/inventory-service/inventory-service.iml" filepath="$PROJECT_DIR$/inventory-service/inventory-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/order-service/order-service.iml" filepath="$PROJECT_DIR$/order-service/order-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/product-web-service/product-web-service.iml" filepath="$PROJECT_DIR$/product-web-service/product-web-service.iml" />
     </modules>
   </component>
 </project>
