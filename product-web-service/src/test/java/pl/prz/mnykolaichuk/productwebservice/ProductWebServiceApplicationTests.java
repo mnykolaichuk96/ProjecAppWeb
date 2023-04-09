@@ -49,7 +49,6 @@ class ProductWebServiceApplicationTests {
 	 * */
 	@Test
 	void shouldCreateProduct() throws Exception {
-		getProductRequest();
 		String productRequestString = objectMapper.writeValueAsString(getProductRequest());
 		mockMvc.perform(MockMvcRequestBuilders.post("/api/product")
 						.contentType(MediaType.APPLICATION_JSON)
