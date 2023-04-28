@@ -1,0 +1,70 @@
+version: '3.9'
+
+services:
+  order-service-db:
+    container_name: order-service-db
+    image: mysql:8.0.32
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_DATABASE: order-service
+      MYSQL_USER: kolya5179596
+      MYSQL_PASSWORD: Rjkz0985179596
+
+  order-service:
+    container_name: order-service
+    image: mnykolaichuk/paw-order-service:latest
+    ports:
+      - 8081:8081
+    environment:
+      - DATABASE_URL=jdbc:mysql://order-service-db:3306/order-service
+      - DATABASE_USERNAME=kolya5179596
+      - DATABASE_PASSWORD=Rjkz0985179596
+    depends_on:
+      - order-service-db
+    deploy:
+      # Встановлюємо політику перезапуску:
+      restart_policy:
+        # Умова перезапуску - при помилці
+        condition: on-failure
+        # Затримка між спробами перезапуску - 3 секунди
+        delay: 3s
+        # Максимальна кількість спроб перезапуску - 3
+        max_attempts: 3
+        # Вікно часу, протягом якого має бути досягнутий максимальна кількість спроб перезапуску - 60 секунд
+
+  inventory-service-db:
+    container_name: inventory-service-db
+    image: mysql:8.0.32
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_DATABASE: inventory-service
+      MYSQL_USER: kolya5179596
+      MYSQL_PASSWORD: Rjkz0985179596
+
+  inventory-service:
+    container_name: inventory-service
+    image: mnykolaichuk/paw-inventory-service:latest
+    ports:
+      - 8082:8082
+    environment:
+      - DATABASE_URL=jdbc:mysql://inventory-service-db:3306/inventory-service
+      - DATABASE_USERNAME=kolya5179596
+      - DATABASE_PASSWORD=Rjkz0985179596
+    depends_on:
+      - inventory-service-db
+    deploy:
+      # Встановлюємо політику перезапуску:
+      restart_policy:
+        # Умова перезапуску - при помилці
+        condition: on-failure
+        # Затримка між спробами перезапуску - 3 секунди
+        delay: 3s
+        # Максимальна кількість спроб перезапуску - 3
+        max_attempts: 3
+        # Вікно часу, протягом якого має бути досягнутий максимальна кількість спроб перезапуску - 60 секунд
+
+

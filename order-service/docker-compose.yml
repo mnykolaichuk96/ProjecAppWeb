@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  inventory-service-db:
+    image: mysql:8.0.32
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_DATABASE: inventory-service
+      MYSQL_USER: kolya5179596
+      MYSQL_PASSWORD: Rjkz0985179596
+
+  inventory-service:
+    image: mnykolaichuk/paw-inventory-service:28.04.23
+    ports:
+      - 8082:8082
+    environment:
+      - DATABASE_URL=jdbc:mysql://inventory-service-db:3306/inventory-service
+      - DATABASE_USERNAME=kolya5179596
+      - DATABASE_PASSWORD=Rjkz0985179596
+    depends_on:
+      - inventory-service-db
+    deploy:
+      # Встановлюємо політику перезапуску:
+      restart_policy:
+        # Умова перезапуску - при помилці
+        condition: on-failure
+        # Затримка між спробами перезапуску - 3 секунди
+        delay: 3s
+        # Максимальна кількість спроб перезапуску - 3
+        max_attempts: 5
+        # Вікно часу, протягом якого має бути досягнутий максимальна кількість спроб перезапуску - 60 секунд
+
+
+
+
+
